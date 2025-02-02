@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniMap</title>
+  <!-- Inclusione dello stile di Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    /* Imposta l'altezza della mappa */
+    #map {
+      height: 6000px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Contenitore per la mappa -->
+  <div id="map"></div>
+
+  <!-- Inclusione della libreria Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Inizializza la mappa centrata su una posizione (latitudine, longitudine) e con un livello di zoom specifico
+    var map = L.map('map').setView([45.4642, 9.1900], 13); // Esempio: Milano
+
+    // Aggiungi i layer delle mappe da OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Aggiungi un punto d'interesse
+    var marker = L.marker([45.4642, 9.1900]).addTo(map);
+    marker.bindPopup("<b>Universita Esempio</b><br>Università degli esempi").openPopup();
+
+    // Puoi aggiungere ulteriori marker per altri punti d'interesse
+    // Ad esempio:
+    /*
+    var marker2 = L.marker([45.4700, 9.1850]).addTo(map);
+    marker2.bindPopup("Altro punto d'interesse");
+    */
+  </script>
+</body>
+</html>
